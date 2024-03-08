@@ -20,4 +20,6 @@
 
     <!-- Team -->
     <string name="top_app_bar_title_team">Team</string>
+    <string name="text_empty_tournaments_list">Currently there is no any tournaments</string>
+    <string name="blank_error_message">An error occured</string>
 </resources>

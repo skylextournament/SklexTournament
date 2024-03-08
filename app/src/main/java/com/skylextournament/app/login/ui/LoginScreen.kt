@@ -11,7 +11,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Key
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -30,7 +29,6 @@ import com.skylextournament.app.R
 import com.skylextournament.app.ui.common.NormalTextField
 import com.skylextournament.app.ui.common.PasswordTextField
 
-@ExperimentalMaterial3Api
 @Composable
 fun LoginScreen(
     modifier: Modifier = Modifier,
@@ -105,7 +103,6 @@ fun LoginScreen(
     }
 }
 
-@ExperimentalMaterial3Api
 @Preview(showBackground = true)
 @Composable
 fun LoginScreen_Preview() {

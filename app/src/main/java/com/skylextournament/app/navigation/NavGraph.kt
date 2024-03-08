@@ -1,19 +1,18 @@
 package com.skylextournament.app.navigation
 
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.skylextournament.app.home.ui.HomeScreen
 import com.skylextournament.app.login.ui.LoginScreen
 
-@ExperimentalMaterial3Api
 @Composable
 fun NavGraph(
-    navController: NavHostController
+    navController: NavHostController = rememberNavController(),
 ) {
     NavHost(
         navController = navController,
@@ -24,7 +23,6 @@ fun NavGraph(
     }
 }
 
-@ExperimentalMaterial3Api
 fun NavGraphBuilder.authNavGraph(
     navController: NavHostController
 ) {

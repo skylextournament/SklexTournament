@@ -2,7 +2,6 @@ package com.skylextournament.app.ui.common
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -23,7 +22,6 @@ import com.skylextournament.app.profile.ui.ProfileScreen
 import com.skylextournament.app.team.ui.TeamScreen
 import com.skylextournament.app.tournaments.ui.TournamentsScreen
 
-@ExperimentalMaterial3Api
 @Composable
 fun BottomNavigationBar() {
     val navController = rememberNavController()
@@ -67,7 +65,9 @@ fun BottomNavigationBar() {
         ) {
             composable(route = Screens.Tournaments.route) {
                 TournamentsScreen(
-                    argument = Screens.Profile.Args.username
+                    onListItemClick = {
+                        //TODO: Navigate to detailed screen
+                    },
                 )
             }
             composable(route = Screens.Team.route) {
