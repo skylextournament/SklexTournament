@@ -16,14 +16,16 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.skylextournament.app.feature.profile.ui.ProfileScreen
+import com.skylextournament.app.feature.team.ui.TeamScreen
+import com.skylextournament.app.feature.tournaments.ui.TournamentsScreen
 import com.skylextournament.app.navigation.BottomNavigationItem
 import com.skylextournament.app.navigation.Screens
-import com.skylextournament.app.profile.ui.ProfileScreen
-import com.skylextournament.app.team.ui.TeamScreen
-import com.skylextournament.app.tournaments.ui.TournamentsScreen
 
 @Composable
-fun BottomNavigationBar() {
+fun BottomNavigationBar(
+    navigateToLogin: () -> Unit,
+) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -60,25 +62,17 @@ fun BottomNavigationBar() {
     ) { paddingValues ->
         NavHost(
             navController = navController,
-            startDestination = Screens.Tournaments.route,
+            startDestination = Screens.TournamentsScreen.route,
             modifier = Modifier.padding(paddingValues = paddingValues)
         ) {
-            composable(route = Screens.Tournaments.route) {
-                TournamentsScreen(
-                    onListItemClick = {
-                        //TODO: Navigate to detailed screen
-                    },
-                )
+            composable(route = Screens.TournamentsScreen.route) {
+                TournamentsScreen()
             }
-            composable(route = Screens.Team.route) {
-                TeamScreen(
-                    argument = Screens.Profile.Args.username
-                )
+            composable(route = Screens.TeamScreen.route) {
+                TeamScreen()
             }
-            composable(route = Screens.Profile.route) {
-                ProfileScreen(
-                    argument = Screens.Profile.Args.username
-                )
+            composable(route = Screens.ProfileScreen.route) {
+                ProfileScreen(navigateToLogin)
             }
         }
     }

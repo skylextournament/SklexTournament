@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "519468935737",
+    "project_id": "skylex-tournament-app",
+    "storage_bucket": "skylex-tournament-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519468935737:android:3e50c40f6f0cd2f5f93be8",
+        "android_client_info": {
+          "package_name": "com.skylextournament.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0QQmB7TuDTQUuMvbZcN47JbYpq0OS2io"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

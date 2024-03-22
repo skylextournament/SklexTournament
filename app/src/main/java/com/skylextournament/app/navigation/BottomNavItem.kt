@@ -17,11 +17,19 @@ data class BottomNavigationItem(
 
     fun bottomNavigationItems() = listOf(
         BottomNavigationItem(
-            R.string.top_app_bar_title_tournaments,
-            Icons.Default.VideogameAsset,
-            Screens.Tournaments.route
+            label = R.string.top_app_bar_title_tournaments,
+            icon = Icons.Default.VideogameAsset,
+            route = Screens.TournamentsScreen.route
         ),
-        BottomNavigationItem(R.string.top_app_bar_title_team, Icons.Default.Group, Screens.Team.route),
-        BottomNavigationItem(R.string.top_app_bar_title_profile, Icons.Default.Person, Screens.Profile.route),
+        BottomNavigationItem(
+            label = R.string.top_app_bar_title_team,
+            icon = Icons.Default.Group,
+            route = Screens.TeamScreen.route
+        ),
+        BottomNavigationItem(
+            label = R.string.top_app_bar_title_profile,
+            icon = Icons.Default.Person,
+            route = Screens.ProfileScreen.route
+        ),
     )
 }
