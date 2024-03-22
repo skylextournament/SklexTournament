@@ -20,16 +20,18 @@ fun NormalTextField(
     value: String,
     label: String,
     onValueChange: (String) -> Unit,
-    leadingIcon: @Composable (() -> Unit)?,
-    trailingIcon: @Composable (() -> Unit)?,
     modifier: Modifier = Modifier,
+    leadingIcon: @Composable (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
     enabled: Boolean = true,
     readOnly: Boolean = false,
     isError: Boolean = false,
+    singleLine: Boolean = true,
+    keyboardType: KeyboardType = KeyboardType.Text,
     onDone: (KeyboardActionScope.() -> Unit)?
 ) {
     TextField(
-        value = value.trim(),
+        value = value,
         onValueChange = onValueChange,
         label = { Text(text = label) },
         leadingIcon = leadingIcon,
@@ -46,12 +48,12 @@ fun NormalTextField(
         },
         modifier = modifier
             .width(TextFieldDefaults.MinWidth),
-        singleLine = true,
+        singleLine = singleLine,
         readOnly = readOnly,
         isError = isError,
         enabled = enabled,
         keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Text,
+            keyboardType = keyboardType,
             imeAction = ImeAction.Done
         ),
         keyboardActions = KeyboardActions(

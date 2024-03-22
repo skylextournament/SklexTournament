@@ -1,4 +1,4 @@
-package com.skylextournament.app.home.ui
+package com.skylextournament.app.feature.home
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -8,8 +8,10 @@ import androidx.compose.ui.Modifier
 import com.skylextournament.app.ui.common.BottomNavigationBar
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navigateToLogin: () -> Unit,
+) {
     Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-        BottomNavigationBar()
+        BottomNavigationBar(navigateToLogin)
     }
 }
