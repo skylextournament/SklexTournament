@@ -10,8 +10,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.GroupRemove
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -68,6 +70,16 @@ fun HasTeamScreen(state: TeamState.HasTeam, viewModel: TeamViewModel) {
                                 modifier = Modifier.padding(start = 8.dp),
                                 fontWeight = FontWeight.Bold,
                             )
+                        }
+                        if (state.isLeader) {
+                            if (member.email != state.team.leader.email) {
+                                IconButton(onClick = { viewModel.removeFromTeam(member) }) {
+                                    Icon(
+                                        imageVector = Icons.Default.GroupRemove,
+                                        contentDescription = "Remove ${member.nickname} from group",
+                                    )
+                                }
+                            }
                         }
                     }
                 }

@@ -171,6 +171,20 @@ class TeamRepository @Inject constructor(
         }
     }
 
+    fun removeFromTeam(team: Team, memberEmail: String, completion: (Result<Unit>) -> Unit) {
+        val teamMembersAfterRemove = team.teamMembers.filterNot { it.email == memberEmail }
+        val teamAfterRemove = team.copy(teamMembers = teamMembersAfterRemove)
+        db.collection(TEAMS_COLLECTION)
+            .document(team.name)
+            .set(teamAfterRemove.toMap())
+            .addOnSuccessListener {
+                completion(Result.success(Unit))
+            }
+            .addOnFailureListener { exception ->
+                completion(Result.failure(exception))
+            }
+    }
+
     private fun Team.toMap() = mapOf(
         "name" to name,
         "leader" to leader,

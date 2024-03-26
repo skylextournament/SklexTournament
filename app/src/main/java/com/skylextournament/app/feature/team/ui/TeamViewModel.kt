@@ -1,6 +1,7 @@
 package com.skylextournament.app.feature.team.ui
 
 import androidx.lifecycle.ViewModel
+import com.skylextournament.app.common.model.Account
 import com.skylextournament.app.common.model.Team
 import com.skylextournament.app.feature.team.data.TeamState
 import com.skylextournament.app.repository.SessionRepository
@@ -111,5 +112,17 @@ class TeamViewModel @Inject constructor(
     fun onInvitedEmailChange(newValue: String) {
         val currentState = (state.value as? TeamState.HasTeam) ?: return
         _state.value = currentState.copy(invitedEmail = newValue)
+    }
+
+    fun removeFromTeam(member: Account) {
+        val team = (state.value as? TeamState.HasTeam)?.team ?: return
+        _state.value = TeamState.Loading
+        teamsRepository.removeFromTeam(team, member.email) { result ->
+            if (result.isSuccess) {
+                load()
+            } else {
+                _state.value = TeamState.Error(result.exceptionOrNull()?.message ?: "")
+            }
+        }
     }
 }
