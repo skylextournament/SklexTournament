@@ -1,6 +1,7 @@
 package com.skylextournament.app.feature.tournaments.ui
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.skylextournament.app.common.model.Tournament
 import com.skylextournament.app.feature.tournaments.data.TournamentsState
 import com.skylextournament.app.repository.SessionRepository
@@ -10,6 +11,7 @@ import com.skylextournament.app.ui.common.DATE_TIME_PATTERN
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -33,7 +35,7 @@ class TournamentsViewModel @Inject constructor(
         _state.value = TournamentsState.AddTournament(Tournament())
     }
 
-    fun load() {
+    fun load() = viewModelScope.launch {
         _state.value = TournamentsState.Loading
         tournamentRepository.getTournaments { tournamentsResult ->
             if (tournamentsResult.isSuccess) {

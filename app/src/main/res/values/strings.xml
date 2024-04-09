@@ -23,7 +23,12 @@
     <!-- Profile -->
     <string name="top_app_bar_title_profile">Profile</string>
     <string name="field_hello">Hello</string>
+    <string name="field_about">About</string>
     <string name="button_logout">Logout</string>
+    <string name="button_save_about_me">Save about me</string>
+    <string name="button_edit_about_me">Edit about me</string>
+    <string name="field_account_description">About me</string>
+    <string name="default_about_me">Add your description here</string>
 
     <!-- Tournaments -->
     <string name="top_app_bar_title_tournaments">Tournaments</string>

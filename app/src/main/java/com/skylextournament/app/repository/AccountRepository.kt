@@ -16,19 +16,23 @@ class AccountRepository @Inject constructor(
         auth.createUserWithEmailAndPassword(account.email, account.password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    db.collection(USERS_COLLECTION)
-                        .document(account.email)
-                        .set(account.toMap())
-                        .addOnSuccessListener {
-                            completion(Result.success(Unit))
-                        }
-                        .addOnFailureListener { exception ->
-                            completion(Result.failure(exception))
-                        }
+                    updateAccount(account, completion)
                 } else {
                     val exception = task.exception!!
                     completion(Result.failure(exception))
                 }
+            }
+    }
+
+    fun updateAccount(account: Account, completion: (Result<Unit>) -> Unit) {
+        db.collection(USERS_COLLECTION)
+            .document(account.email)
+            .set(account.toMap())
+            .addOnSuccessListener {
+                completion(Result.success(Unit))
+            }
+            .addOnFailureListener { exception ->
+                completion(Result.failure(exception))
             }
     }
 
@@ -96,7 +100,8 @@ class AccountRepository @Inject constructor(
     private fun Account.toMap() = mapOf(
         "email" to email,
         "nickname" to nickname,
-        "isAdmin" to isAdmin
+        "isAdmin" to isAdmin,
+        "description" to description
     )
 
     private companion object {
