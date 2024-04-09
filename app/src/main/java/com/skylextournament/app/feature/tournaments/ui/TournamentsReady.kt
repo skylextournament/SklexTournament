@@ -47,10 +47,7 @@ fun TournamentsReadyScreen(state: TournamentsState.Ready, viewModel: Tournaments
                 )
             }
         },
-    ) { padding ->
-        Column(
-            modifier = Modifier.padding(padding)
-        ) {
+        topBar = {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -68,6 +65,13 @@ fun TournamentsReadyScreen(state: TournamentsState.Ready, viewModel: Tournaments
                     }
                 )
             }
+        }
+    ) { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(padding)
+        ) {
             if (state.tournaments.isEmpty()) {
                 Text(text = stringResource(id = R.string.text_empty_tournaments_list))
             } else {
@@ -83,7 +87,11 @@ fun TournamentsReadyScreen(state: TournamentsState.Ready, viewModel: Tournaments
                                 }
                             },
                             supportingContent = {
-                                Column(modifier = Modifier.padding(top = 24.dp)) {
+                                Column(
+                                    modifier = Modifier
+                                        .padding(top = 24.dp)
+                                        .fillMaxWidth()
+                                ) {
                                     Text(
                                         text = tournament.overview
                                     )
